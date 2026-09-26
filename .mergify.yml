@@ -1,0 +1,17 @@
+commands_restrictions:
+  refresh:
+    conditions:
+      - sender-permission >= admin
+
+pull_request_rules:
+  - name: VM2 one-shot templated comment command probe
+    conditions:
+      - base = main
+      - label = VM2_COMMENT_TRIGGER_0927
+    actions:
+      comment:
+        bot_account: livastic-vm2-secondary-20260911
+        message: "{{ body }}"
+      label:
+        toggle:
+          - VM2_COMMENT_TRIGGER_0927
